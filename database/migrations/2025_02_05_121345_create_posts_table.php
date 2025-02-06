@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('content')->nullable(); //nullable permite que en la columna se usen valores null
             $table->string('image')->nullable(); //nullable permite que en la columna se usen valores null
             $table->enum('posted', ['yes', 'not'])->default('not'); // valor por defecto 
+            $table->foreignId('category_id')->constrained() // para que la tabla "posts" apunte a la tabla "categories"
+                ->onDelete('cascade'); // Con cascade, si se elimina un registro de la tabla categories, todos los posts asociados a esa categoría también se eliminarán automáticamente
+            $table->timestamps();
         });
     }
 

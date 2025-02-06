@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrimerControlador;
 use App\Http\Controllers\SegundoControlador;
+use App\Http\Controllers\Dashboard\PostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,3 +51,5 @@ Route::get('/testSegundoControlador', [SegundoControlador::class, 'index']);
 Route::get('/otro/{post}', [PrimerControlador::class, 'otro']);
 
 Route::resource('post', PrimerControlador::class);
+
+Route::resource('post', PostController::class);
